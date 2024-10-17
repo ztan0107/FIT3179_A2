@@ -32,7 +32,7 @@
     "mark": {"type": "geoshape"},
     "encoding": {
       "color": {
-        "field": "People Affected Per 100,000 People",
+        "field": "People Affected",
         "type": "quantitative"
       },
       "tooltip": [
