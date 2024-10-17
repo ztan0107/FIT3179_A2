@@ -12,7 +12,7 @@ vegaEmbed("#line_chart", vg_1).then(function(result) {
 }).catch(console.error);
 
 var vg_2 = "js/natural_disasters_contributes_to_death.vg.json";
-vegaEmbed("#pie_chart", vg_1).then(function(result) {
+vegaEmbed("#pie_chart", vg_2).then(function(result) {
 // Access the Vega view instance
 (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
