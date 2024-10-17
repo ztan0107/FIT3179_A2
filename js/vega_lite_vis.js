@@ -5,19 +5,19 @@
 
 //Line 2 embeds the Vega-Lite visualisation stored in “vg_1” in the div container named “bar_chart” (do not forget the “#” key before the div name).
 
-var vg_1 = "js/natural_disasters_contributes_to_death.vg.json";
+var vg_1 = "natural_disasters_contributes_to_death.vg.json";
 vegaEmbed("#line_chart", vg_1).then(function(result) {
 // Access the Vega view instance
 (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
 
-var vg_2 = "js/natural_disasters_contributes_to_death.vg.json";
+var vg_2 = "natural_disasters_contributes_to_death.vg.json";
 vegaEmbed("#pie_chart", vg_2).then(function(result) {
 // Access the Vega view instance
 (https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
 
-var vg_3 = "js/people_affected_by_disasters_2020.vg.json";
+var vg_3 = "people_affected_by_disasters_2020.vg.json";
 vegaEmbed("#map1", vg_3).then(function(result) {
 // Access the Vega view instance 
 //(https://vega.github.io/vega/docs/api/view/) as result.view
