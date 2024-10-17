@@ -25,19 +25,19 @@
         }
   
       },
-      {"calculate": "datum.Number_of_total_people_affected_by_disasters", "as": "People Affected Per 100,000 People"},
+      {"calculate": "datum.Number_of_total_people_affected_by_disasters", "as": "People Affected"},
       {"filter":"datum.Year == Year_selection"}
   
     ],
     "mark": {"type": "geoshape"},
     "encoding": {
       "color": {
-        "field": "People Affected Per 100,000 People",
+        "field": "People Affected",
         "type": "quantitative"
       },
       "tooltip": [
         {"field": "properties.NAME", "type": "nominal", "title": "Country:"},
-        {"field": "People Affected Per 100,000 People", "type": "quantitative", "title":"Peoples Affected:"}
+        {"field": "People Affected", "type": "quantitative", "title":"Peoples Affected:"}
       ]
     }
   }
