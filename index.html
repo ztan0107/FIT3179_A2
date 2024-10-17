@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
     <script src="vega_lite_vis.js"></script>
-    <title>>Natural Disaster </title>
+    <title>Natural Disaster </title>
 
     <style>
         body {
@@ -26,6 +26,14 @@
             color: #333;
             margin-bottom: 10px;
             font-family: 'Times New Roman', Times, serif;
+            font-size: 100px;
+        }
+        
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 50px;
         }
 
         p {
@@ -35,13 +43,36 @@
             font-size: 17px;
         }
 
+        /* Container for the title with the image as the background */
+        .bg-container {
+            position: relative;
+            width: 1000px;
+            height: 400px;
+            background-image: url('natural_disaster_image.jpg'); /* Path to your image */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 48px;
+            font-weight: bold;
+            padding-left: 10px;
+            border-radius: 8px;
+            flex: 2;
+        }
+
+        /* Add shadow to text for better visibility */
+        .bg-container h1 {
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
         .container {
             display: flex;
             justify-content: space-between;
             width: 80%;
             margin: 10px 0;
         }
-
         .container-2 {
             padding-top: 15px;
             padding-bottom: 15px;
@@ -100,25 +131,62 @@
 
 
 <body>
-    <h1>Natural Disaster</h1>
+    <div class="bg-container">    
+        <h1>
+        Natural Disaster
+    </h1>
+    </div>
     <div class="container-2">
         <p><strong>Natural Disaster</strong> is the negative impact following an actual occurrence of natural hazard in the event that it significantly harms a community.</p> 
-        <p>Due Primarily to human activity, Global Warming is causing temperatures to rise around the world and 
+        <!-- <p>Due Primarily to human activity, Global Warming is causing temperatures to rise around the world and 
             impacting the climates in different areas, which causes the occurrence of Natural Disasters to increase every year
-        </p>
+        </p> -->
     </div>
 
     <div class="container-2">
-        <p><strong>Did you know</strong> that <strong style="color: #922B21;">Natural Disaster</strong> is one of the hottest topics shaping our world today 🌍?</p> 
-        <p>It’s all about how <strong>wealth</strong> is unevenly spread, both between countries and within them, and it affects us all!</p>
-        <p><strong>Get ready</strong> to see the <i>alarming realities</i> of income inequality and understand just how <strong style="color: #922B21;">severe</strong> the situation is right now. </p>   
+        <p>Due primarily to <strong>human activity,</strong><strong style="color: #922B21;"> Global Warming</strong> is causing temperatures to rise around the world and 
+            impacting the climates in different areas, which causes the occurrence of Natural Disasters to increase every year</p> 
+        <!-- <p>It’s all about how <strong>wealth</strong> is unevenly spread, both between countries and within them, and it affects us all!</p>
+        <p><strong>Get ready</strong> to see the <i>alarming realities</i> of income inequality and understand just how <strong style="color: #922B21;">severe</strong> the situation is right now. </p>    -->
+    </div>
+
+    <h2>Number of Disaster Occur</h2>
+    <div class="container-2">
+        <p>
+            Over the years, <strong>Natural Disaster Occurence</strong> increases significantly over the years due primarily to <strong>human activity,</strong><strong style="color: #922B21;"> Global Warming</strong> is causing temperatures to rise around the world and 
+                impacting the climates in different areas.
+        </p>
     </div>
 
     <div id="line_chart">
     </div>
     
-     <div id="pie_chart">
+
+    <h2>
+        How many People Are Affected?
+    </h2>
+
+    <div id="map1">
     </div>
+
+    <h2>
+        Which Natural Disaster contributes to Deaths?
+    </h2>
+    <div id="pie_chart">
+    </div>
+
+    <h2>
+        Does that affects the GDP?
+    </h2>
+
+    <ul>
+        <li>Created by: Tang Zhong Weng</li>
+        <li>Date: 17th October 2024</li>
+        <li>
+            Data Source: 
+            <a href="https://ourworldindata.org/natural-disasters">Our World in Data</a>
+        </li>
+    </ul>
 </body>
 
 </html>
