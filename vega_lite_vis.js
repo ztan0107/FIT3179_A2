@@ -5,6 +5,7 @@
 
 //Line 2 embeds the Vega-Lite visualisation stored in “vg_1” in the div container named “bar_chart” (do not forget the “#” key before the div name).
 
+
 var vg_1 = "natural_disasters_contributes_to_death.vg.json";
 vegaEmbed("#line_chart", vg_1).then(function(result) {
 // Access the Vega view instance
