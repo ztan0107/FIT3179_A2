@@ -8,13 +8,13 @@
 var vg_1 = "js/natural_disasters_contributes_to_death.vg.json";
 vegaEmbed("#line_chart", vg_1).then(function(result) {
 // Access the Vega view instance
-(https://vega.github.io/vega/docs/api/view/) as result.view
+//(https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
 
 var vg_2 = "js/natural_disasters_contributes_to_death.vg.json";
 vegaEmbed("#pie_chart", vg_2).then(function(result) {
 // Access the Vega view instance
-(https://vega.github.io/vega/docs/api/view/) as result.view
+//(https://vega.github.io/vega/docs/api/view/) as result.view
 }).catch(console.error);
 
 var vg_3 = "js/people_affected_by_disasters_2020.vg.json";
