@@ -1,0 +1,40 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "title": { "text": "Which Natural Disaster contributes to Deaths?" },
+    "data": {
+    "url": "https://raw.githubusercontent.com/ztan0107/FIT3179_A2/refs/heads/main/data/relative_disaster_percentage_new.csv"
+    },
+    "width": 500,
+    "params": [
+      {"name": "Year_selection",
+      "value": 2023,
+      "bind": {
+      "input": "range",
+      "min": 1900,
+      "max": 2023,
+      "step": 1,
+      "name": "Year:"
+      }
+      }],
+    "transform": [
+    {
+      "filter": "datum.Year == Year_selection"
+    }
+  ],
+  "mark": {
+    "type": "arc",
+    "innerRadius": 50
+  },
+  
+    "encoding": {
+      "theta": {"field": "Deaths", "type": "quantitative"},
+      "color": {"field": "Entity", "type": "nominal"},
+      "tooltip": [
+        {"field": "Entity", "type": "nominal", "title":
+        "Natural Disasters: "},
+        {"field": "Relative_Death_Percentage", 
+        "type": "quantitative","format":".2f"}
+]
+
+    }
+    }
