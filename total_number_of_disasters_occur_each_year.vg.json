@@ -1,11 +1,17 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Total Number of Disaster from 1900 till 2023" },
+    "title": { "text": "Total Number of Disaster from 1900 till 2023" , "fontSize":20},
     "data": {
     "url": "https://raw.githubusercontent.com/ztan0107/3179/refs/heads/main/FIT3179%20Assignment%202/data/number-of-natural-disaster-events.csv"
     },
+    "background":"transparent",
     "width": 1000,
     "height":500,
+    "config": {
+      "axis": {
+        "grid": false
+      }
+      },
     "params": [
       {
         "name": "Entity_selection",
@@ -35,17 +41,69 @@
     {
       "filter": "datum.Entity == Entity_selection"
     }],
-    "mark": "line",
-    "encoding": {
-    "x": { "field": "Year", "type": "temporal" },
-    "y": { "field": "Disasters", "type": "quantitative" },
-    "tooltip": [
-        {"field": "Entity", "type": "nominal", "title":
-        "Natural Disasters: "},
-        {"field": "Year", 
-        "type": "temporal","timeUnit": "year", "title": "Year"},
-        {"field": "Disasters", 
-        "type": "quantitative","format":".0f", "title": "Number of occurence"}
-]
-    }
+    "layer":[
+      {
+        "mark": "line",
+        "encoding": {
+        "x": { "field": "Year", "type": "temporal" },
+        "y": { "field": "Disasters", "type": "quantitative" },
+        "color": {
+          "field": "Entity",
+          "title":"Natural Disasters",
+          "type": "nominal",
+          "scale": {
+          "domain": [
+          "All disasters",
+          "Flood",
+          "Drought",
+          "Earthquake",
+          "Extreme weather",
+          "Extreme temperature"
+          ],
+          "range": [
+            "#e41a1c", 
+            "#984ea3", 
+            "#ff7f00",  
+            "#f781bf",  
+            "#377eb8",  
+            "#a65628"   
+          ]
+          }
+        },
+        "tooltip": [
+            {"field": "Entity", "type": "nominal", "title":
+            "Natural Disasters: "},
+            {"field": "Year", 
+            "type": "temporal","timeUnit": "year", "title": "Year"},
+            {"field": "Disasters", 
+            "type": "quantitative","format":".0f", "title": "Number of occurence"}
+    ]
+        }        
+      },
+      {
+        "mark":{"type":"point", "filled": true, "size": 100},
+        "encoding": {
+        "x": { "field": "Year", "type": "temporal" ,"axis": {
+          "labelFontSize": 14,  
+          "titleFontSize": 20  
+        }},
+        "y": { "field": "Disasters", "type": "quantitative","axis": {
+          "labelFontSize": 14,  
+          "titleFontSize": 20   }},
+        "color": {
+          "field": "Entity",
+          "type": "nominal",
+          "scale": { "scheme": "category10" }
+        },
+        "tooltip": [
+            {"field": "Entity", "type": "nominal", "title":
+            "Natural Disasters: "},
+            {"field": "Year", 
+            "type": "temporal","timeUnit": "year", "title": "Year"},
+            {"field": "Disasters", 
+            "type": "quantitative","format":".0f", "title": "Number of occurence"}
+    ]
+        }
+      }
+    ]
     }

@@ -1,40 +1,101 @@
 {
-    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "title": { "text": "Which Natural Disaster contributes to Deaths?" },
-    "data": {
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
     "url": "https://raw.githubusercontent.com/ztan0107/FIT3179_A2/refs/heads/main/data/relative_disaster_percentage_new.csv"
-    },
-    "width": 500,
-    "params": [
-      {"name": "Year_selection",
+  },
+  "width": 500,
+  "height": 500,
+  "background": "transparent",
+  "params": [
+    {
+      "name": "Year_selection",
       "value": 2023,
       "bind": {
-      "input": "range",
-      "min": 1900,
-      "max": 2023,
-      "step": 1,
-      "name": "Year:"
+        "input": "range",
+        "min": 1900,
+        "max": 2023,
+        "step": 1,
+        "name": "Year: "
       }
-      }],
-    "transform": [
+    }
+  ],
+  "transform": [
     {
       "filter": "datum.Year == Year_selection"
     }
   ],
   "mark": {
     "type": "arc",
-    "innerRadius": 50
+    "innerRadius": 70,
+    "stroke": "black",
+    "strokeWidth": 5
   },
-  
-    "encoding": {
-      "theta": {"field": "Deaths", "type": "quantitative"},
-      "color": {"field": "Entity", "type": "nominal"},
-      "tooltip": [
-        {"field": "Entity", "type": "nominal", "title":
-        "Natural Disasters: "},
-        {"field": "Relative_Death_Percentage", 
-        "type": "quantitative","format":".2f"}
-]
+  "encoding": {
+    "theta": {
+      "field": "Entity",
+      "type": "nominal"
+    },
+    "radius": {
+      "field": "Deaths",
+      "type": "quantitative",
+      "scale": {
+        "type": "sqrt",   
+        "zero": true,
+        "rangeMin": 30       
+      },
+      "title": "Number of Deaths"
+    },
+    "color": {
+      "field": "Entity",
+      "type": "nominal",
+      "title": "Natural Disasters",
+      "scale": {
+        "domain": [
+          "Volcanic activity",
+          "Flood",
+          "Drought",
+          "Earthquake",
+          "Extreme weather",
+          "Extreme temperature",
+          "Dry mass movement",
+          "Wet mass movement",
+          "Fog",
+          "Wildfire",
+          "Glacial lake outburst flood"
+        ],
+        "range": [
+          "#E69F00", "#56B4E9", "#009E73", "#F0E442", 
+          "#0072B2", "#D55E00", "#CC79A7", "#999999", 
+          "#F4A582", "#92C5DE", "#CA0020"
+        ]
+      }
+    },
+    "tooltip": [
+      {
+        "field": "Entity",
+        "type": "nominal",
+        "title": "Natural Disasters: "
+      },
+      {
+        "field": "Relative_Death_Percentage",
+        "type": "quantitative",
+        "format": ".2f",
+        "title": "Death Contribution (%)"
+      },
+      {
+        "field": "Deaths",
+        "type": "quantitative",
+        "format": ".0f",
+        "title": "Deaths caused"
+      },
+      {
+        "field": "Total_Deaths",
+        "type": "quantitative",
+        "format": ".0f",
+        "title": "Total Deaths"
+      }
+    ]
+  }
+}
 
-    }
-    }
+
