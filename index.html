@@ -9,13 +9,26 @@
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
     <script src="vega_lite_vis.js"></script>
-    <title> Natural Disaster </title>
-
+    <title>Natural Disaster </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+    
     <style>
+        footer{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 8px 0; 
+            padding: 0;
+            font-size: 17px;
+        }
         body {
             background-color: #dbe9fa;
+            background-image: url(natural_disaster_image.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
+            background-size: cover;
             font-family: Arial, sans-serif;
-            margin: 0;
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -23,42 +36,49 @@
         }
 
         h1 {
-            color: #333;
+            color: #ffffff;
             margin-bottom: 10px;
             font-family: 'Times New Roman', Times, serif;
-            font-size: 100px;
+            font-size: 120px;
+            text-align: center;
         }
         
         h2 {
-            color: #333;
+            color: #ffffff;
             margin-bottom: 10px;
             font-family: 'Times New Roman', Times, serif;
-            font-size: 50px;
+            font-size: 75px;
+            text-shadow: 5px 5px 20px #000000;
+            text-align: center;
         }
 
         p {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'merriweather','kanit',;
             margin: 8px 0; 
             padding: 0;
-            font-size: 17px;
+            font-size: 20px;
+            text-align: center;
+            font-weight:200;
+            padding-bottom: 1%;
         }
 
         /* Container for the title with the image as the background */
         .bg-container {
+            /* background-image: url('natural_disaster_image.jpg'); */
             position: relative;
             width: 1000px;
             height: 400px;
-            background-image: url('css/natural_disaster_image.jpg'); /* Path to your image */
             background-size: cover;
             background-position: center;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: white;
+            color: rgb(87, 85, 85);
             font-size: 48px;
             font-weight: bold;
             padding-left: 10px;
             border-radius: 8px;
+            transition: box-shadow 0.3s ease;
             flex: 2;
         }
 
@@ -67,65 +87,39 @@
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
         }
 
-        .container {
-            display: flex;
-            justify-content: space-between;
-            width: 80%;
-            margin: 10px 0;
-        }
         .container-2 {
+            margin-top: 20px;
+            /* background: #ffffff; */
             padding-top: 15px;
             padding-bottom: 15px;
-            width: 70%;
+            padding-left: 15px;
+            padding-right: 15px;
+            width: 85%;
+            background: linear-gradient(skyblue, rgb(146, 154, 146) );
+            border-radius: 20px;
         }
 
-        .graph {
-            flex: 1;
-            padding: 10px;
-            background-color: #f0f8ff;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        .container-map {
+            margin-top: 20px;
+            background: white;
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 15px;
+            padding-right: 10%;
+            width: 85%;
+            border-radius: 20px;
+            align-items: center;
+            background: linear-gradient(skyblue, rgb(146, 154, 146) );
         }
 
-        .text-box {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            padding: 10px;
-            border-radius: 8px;
-            margin-left: 10px;
+        .barchart {
+            justify-content: center;
+            align-items: center;     
+            width: 100%;           
+            padding: 20px;      
+            padding-left: 25%;  
         }
-
-        .dataset-box {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            border-radius: 8px;
-            padding-top: 10px;
-        }
-
-        .text-box-trans {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            border-radius: 8px;
-            margin-left: 20px;
-        }
-
-        .small-box {
-            flex: 1;
-            height: 500px;
-            padding: 15px;
-            padding-bottom: 5px;
-            border-radius: 8px;
-        }
-
-        .big-box {
-            flex: 2;
-            padding-left: 10px;
-            border-radius: 8px;
-        }
-
+        
     </style>
 </head>
 
@@ -137,56 +131,83 @@
     </h1>
     </div>
     <div class="container-2">
-        <p><strong>Natural Disaster</strong> is the negative impact following an actual occurrence of natural hazard in the event that it significantly harms a community.</p> 
-        <!-- <p>Due Primarily to human activity, Global Warming is causing temperatures to rise around the world and 
-            impacting the climates in different areas, which causes the occurrence of Natural Disasters to increase every year
-        </p> -->
-    </div>
-
-    <div class="container-2">
-        <p>Due primarily to <strong>human activity,</strong><strong style="color: #922B21;"> Global Warming</strong> is causing temperatures to rise around the world and 
-            impacting the climates in different areas, which causes the occurrence of Natural Disasters to increase every year</p> 
-        <!-- <p>It’s all about how <strong>wealth</strong> is unevenly spread, both between countries and within them, and it affects us all!</p>
-        <p><strong>Get ready</strong> to see the <i>alarming realities</i> of income inequality and understand just how <strong style="color: #922B21;">severe</strong> the situation is right now. </p>    -->
+        <p><strong style="color: red;">Natural Disaster</strong> 
+            refer to the negative impacts that follow the occurrence of natural hazards, 
+            particularly when they cause significant harm to communities.</p> 
+        <p>
+            Malaysia is fortunate to be in a geologically stable region, free from severe natural disasters like earthquakes, volcanic eruptions, and typhoons, 
+            though it does experience floods, landslides, and severe haze. 
+            In this exploration, we will look at how extreme natural disasters affect other countries around the world that are more vulnerable to such events.
+        </p>
     </div>
 
     <h2>Number of Disaster Occur</h2>
     <div class="container-2">
         <p>
-            Over the years, <strong>Natural Disaster Occurence</strong> increases significantly over the years due primarily to <strong>human activity,</strong><strong style="color: #922B21;"> Global Warming</strong> is causing temperatures to rise around the world and 
-                impacting the climates in different areas.
+            Over the years, the occurrence of natural disasters has increased significantly, 
+            largely due to human activity. <strong style="color: red;">Global warming</strong> is causing temperatures to rise, 
+            which in turn impacts climates around the world.
         </p>
+        <p>
+            <strong style="color: red;">Floods</strong>, in particular, have become more frequent, especially in high-income countries.
+            This is largely due to urbanization, such as the construction of buildings, highways, and parking lots, as well as deforestation. 
+           These factors reduce the land’s ability to absorb rainwater, leading to increased runoff.
+        </p>
+
+        <div id="line_chart" class="chart">
+        </div>
     </div>
 
-    <div id="line_chart">
-    </div>
-    
 
     <h2>
         How many People Are Affected?
     </h2>
-
-    <div id="map1">
+    <div class="container-map">
+        <div id="map1">
+        </div>
     </div>
 
     <h2>
         Which Natural Disaster contributes to Deaths?
     </h2>
-    <div id="pie_chart">
+    <div class="container-map"> 
+        <p>
+            There are many factors and conditions that cause natural disasters,
+             but <strong style="color: red;">Earthquake</strong> consistently contribute to significant loss of life due to their intensity.
+             They have the power to topple buildings and bridges, rupture gas pipelines and other infrastructure, 
+             and trigger secondary disasters like landslides, tsunamis, and volcanic eruptions.
+        </p>
+        <div id="pie_chart" class="barchart">
+        </div>
     </div>
 
-<!--     <h2>
+    <h2>
         Does that affects the GDP?
-    </h2> -->
+    </h2>
 
-    <ul>
+    <div class="container-map">
+        <p>
+            As natural disasters occur more frequently, they significantly impact a country's GDP 
+            by damaging infrastructure, disrupting businesses and industries, reducing productivity, 
+            increasing government spending, and affecting trade and investment.
+        </p>
+        <p>
+            We observe that smaller countries tend to suffer more severe economic damage from natural disasters. 
+            This is often because they are located in disaster-prone areas, 
+            such as islands, and their economies are heavily reliant on a single sector or resource.
+        </p>
+        <div id="map2"></div>
+    </div>
+
+    <footer class="container-map">
+
         <li>Created by: Tang Zhong Weng</li>
         <li>Date: 17th October 2024</li>
         <li>
             Data Source: 
             <a href="https://ourworldindata.org/natural-disasters">Our World in Data</a>
         </li>
-    </ul>
+    </footer>
 </body>
 
 </html>
